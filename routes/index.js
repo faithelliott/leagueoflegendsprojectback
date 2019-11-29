@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/:id', function(req, res, next) {
-  request('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+req.params.id+'?api_key=RGAPI-5d6abf35-5d96-4f06-88fb-ff8259e5ae2c', { json: false }, (err, res, body) => {
+  request('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+req.params.id+'?api_key=RGAPI-54071df1-b43b-426b-b604-f121e27bed48', { json: false }, (err, res, body) => {
     if (err) { return console.log(err); }
     data = body;
     console.log(body.name);
