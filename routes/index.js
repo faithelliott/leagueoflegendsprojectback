@@ -3,33 +3,23 @@ var router = express.Router();
 var request = require('request');
 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
+var data = "";
 
 router.get('/:id', function(req, res, next) {
-  request('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+req.params.id+'?api_key=RGAPI-54071df1-b43b-426b-b604-f121e27bed48', { json: false }, (err, res, body) => {
-    if (err) { return console.log(err); }
-    data = body;
-    console.log(body.name);
-    console.log(body.summonerLevel);
-    console.log(body);  
-    
+  request('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+ req.params.id +'?api_key=RGAPI-79635536-9e36-487e-80bc-bf945d9f9e6c', { json: false }, (err, res, body) => {
+    data = body; 
   });
-  res.render('index', { title1:  data});
+  res.render('index', {title1:  data});
   console.log('test:'+data);
 });
 
+function ignoreFavicon(req, res, next) {
+  if (req.originalUrl === '/favicon.ico') {
+    res.status(204).json({nope: true});
+  } else {
+    next();
+  }
+}
 
-
-
-request('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/feith?api_key=RGAPI-5d6abf35-5d96-4f06-88fb-ff8259e5ae2c', { json: true }, (err, res, body) => {
-  if (err) { return console.log(err); }
-  console.log(body.name);
-  console.log(body.summonerLevel);
-  console.log(body);  
-});
-
+router.use(ignoreFavicon);
 module.exports = router;
