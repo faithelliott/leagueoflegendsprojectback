@@ -28,7 +28,7 @@ router.get('/:id/:userString',function(req,res,next){
   akaliData = JSON.stringify(akaliData);
   });
   res.send(akaliData);
-
+  res.redirect(req.get('referer'));
 });
 
 function ignoreFavicon(req, res, next) {
