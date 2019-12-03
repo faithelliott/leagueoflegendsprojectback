@@ -6,10 +6,11 @@ var cors = require('cors')({origin: true});
 var data = "";
 var userString ="";
 var akaliData="";
+var api = "RGAPI-4bd84ca4-418a-4e81-9dc2-326cab67e719";
 
 //gets basic account datas
 router.get('/:id', function(req, res) {
-  request('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+ req.params.id +'?api_key=RGAPI-e1e36cd1-d7a1-4c16-8f7d-9c4e60498eae', { json: true }, (err,apiRes,body) => {
+  request('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+ req.params.id +'?api_key='+api, { json: true }, (err,apiRes,body) => {
     userString = body.id;
     console.log(userString);
     res.send(JSON.stringify(body));
@@ -18,7 +19,7 @@ router.get('/:id', function(req, res) {
 
 //gets akali data
 router.get('/:id/:userString',function(req,res){
-  request('https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/'+req.params.userString+'/by-champion/84?api_key=RGAPI-e1e36cd1-d7a1-4c16-8f7d-9c4e60498eae',{json:true},(err,apiRes,body)=>{
+  request('https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/'+req.params.userString+'/by-champion/84?api_key='+api,{json:true},(err,apiRes,body)=>{
   res.send(JSON.stringify(body));
   });
 });
