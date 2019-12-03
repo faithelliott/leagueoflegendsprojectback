@@ -7,7 +7,7 @@ var data = "";
 var userString ="";
 var akaliData="";
 
-
+//gets basic account datas
 router.get('/:id', function(req, res, next) {
   request('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+ req.params.id +'?api_key=RGAPI-05a90f72-a07b-4d8f-bcb3-0a8f938d84ab', { json: true }, (err, res, body) => {
     data = body; 
@@ -21,13 +21,14 @@ router.get('/:id', function(req, res, next) {
   console.log('test:'+data.json);
 });
 
-router.get('/:id/:userString',function(req,res,next){
+//gets akali data
+router.get('/:userString',function(req,res,next){
   request('https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/'+req.params.userString+'/by-champion/84?api_key=RGAPI-05a90f72-a07b-4d8f-bcb3-0a8f938d84ab',{json:true},(err,req,body)=>{
   akaliData = body;
   akaliData = JSON.stringify(akaliData);
   });
   res.send(akaliData);
-  
+
 });
 
 function ignoreFavicon(req, res, next) {
