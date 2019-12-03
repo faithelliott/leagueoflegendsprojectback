@@ -21,13 +21,7 @@ router.get('/:id/:userString',function(req,res,next){
   request('https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/'+req.params.userString+'/by-champion/84?api_key=RGAPI-05a90f72-a07b-4d8f-bcb3-0a8f938d84ab',{json:true},(err,apiRes,body)=>{
   res.send(JSON.stringify(body));
   });
-<<<<<<< HEAD
   
-  
-=======
-  res.send(akaliData);
-  res.redirect(req.get('referer'));
->>>>>>> 23cad5dbaff2d26a4522f831535eb05929028e71
 });
 
 function ignoreFavicon(req, res, next) {
