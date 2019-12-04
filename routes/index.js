@@ -6,7 +6,7 @@ var cors = require('cors')({origin: true});
 var data = "";
 var userString ="";
 var akaliData="";
-var api = "RGAPI-4bd84ca4-418a-4e81-9dc2-326cab67e719";
+var api = "RGAPI-70f1d0e8-b272-452b-bb20-2019abde2e7f";
 
 //gets basic account datas
 router.get('/:id', function(req, res) {
